@@ -17,6 +17,6 @@ public class Reports extends ActionList {
     };
 
     public Reports() {
-        super(TerminalEntries.REPORTS, settings, TerminalEntries.BACK);
+        super(TerminalEntries.REPORTS, settings);
     }
 }

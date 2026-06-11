@@ -23,16 +23,12 @@ public class GestCheckOut implements CommandAction {
         return TerminalEntries.RESIDENT_CHECKOUT;
     }
 
-    @Override
-    public String aboardCommand() {
-        return TerminalEntries.BACK;
-    }
 
     @Override
     public boolean exec() {
             List<RoomOccupation> occupations = occupationService.getAll();
 
-            Optional<Room> room = roomForm.get(occupations.stream().map(RoomOccupation::room).toList(), aboardCommand());
+            Optional<Room> room = roomForm.get(occupations.stream().map(RoomOccupation::room).toList());
 
             if (room.isEmpty()) {
                 System.out.println("Room not found.");

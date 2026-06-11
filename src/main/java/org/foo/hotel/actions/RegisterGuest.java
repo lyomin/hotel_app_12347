@@ -22,16 +22,12 @@ public class RegisterGuest implements CommandAction {
         return TerminalEntries.REGISTER_GUEST;
     }
 
-    @Override
-    public String aboardCommand() {
-        return TerminalEntries.BACK;
-    }
 
     @Override
     public boolean exec() {
 
                 try {
-                    Optional<org.foo.hotel.model.RoomOccupation> occupation = registrationProcesor.get(aboardCommand());
+                    Optional<org.foo.hotel.model.RoomOccupation> occupation = registrationProcesor.get();
                     System.out.println("Guest successfuly registrated " + occupation.get());
                 } catch (AboardException e) {
                 }

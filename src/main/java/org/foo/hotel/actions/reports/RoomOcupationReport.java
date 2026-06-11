@@ -30,16 +30,11 @@ public class RoomOcupationReport implements CommandAction {
     }
 
     @Override
-    public String aboardCommand() {
-        return TerminalEntries.BACK;
-    }
-
-    @Override
     public boolean exec() {
             List<Room> rooms = occupationHistoryService.getOccupationHistory().stream().map(OccupationLog::room)
                     .distinct().toList();
 
-            Optional<Room> room = roomForm.get(rooms, aboardCommand());
+            Optional<Room> room = roomForm.get(rooms);
 
             if (room.isEmpty()) {
                 System.out.println(TerminalEntries.ROOM_NOT_FOUND);

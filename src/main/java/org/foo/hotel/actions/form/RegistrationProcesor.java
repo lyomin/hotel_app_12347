@@ -20,8 +20,8 @@ public class RegistrationProcesor implements ModelInputInterface<RoomOccupation>
     }
 
     @Override
-    public Optional<RoomOccupation> get(String abordSelection) {
-        Guest guest = guestProccessor.get(abordSelection).get();
+    public Optional<RoomOccupation> get() {
+        Guest guest = guestProccessor.get().get();
         return Optional.of(occupationService.tryOccupy(guest, roomService.getAll()));
     }
 }

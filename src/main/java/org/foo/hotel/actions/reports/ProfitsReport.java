@@ -21,11 +21,6 @@ public class ProfitsReport implements CommandAction {
     }
 
     @Override
-    public String aboardCommand() {
-        return TerminalEntries.BACK;
-    }
-
-    @Override
     public boolean exec() {
 
             List<RoomStats> profitReport = occupationHistoryService.getRoomsOccupationStatistics();

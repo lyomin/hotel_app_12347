@@ -23,6 +23,6 @@ public class Main extends ActionList {
     };
 
     public Main() {
-        super(TerminalEntries.APPLICATION, commands, TerminalEntries.EXIT);
+        super(TerminalEntries.APPLICATION, commands);
     }
 }

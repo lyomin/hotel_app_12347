@@ -27,11 +27,6 @@ public class RoomOcuppation implements CommandAction {
     }
 
     @Override
-    public String aboardCommand() {
-        return TerminalEntries.BACK;
-    }
-
-    @Override
     public boolean exec() {
 
                 List<Pair<Room, RoomOccupation>> occupations = listOccupations();

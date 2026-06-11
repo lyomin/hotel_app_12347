@@ -10,7 +10,7 @@ import java.util.Optional;
 
 public class RoomIdSelector {
 
-    public Optional<Room> get(List<Room> rooms, String abordSelection) {
+    public Optional<Room> get(List<Room> rooms) {
 
         if (rooms == null || rooms.isEmpty()) {
             throw new NoRoomFoundException(TerminalEntries.NO_ROOMS_EMPTY_LIST);
@@ -21,7 +21,7 @@ public class RoomIdSelector {
             list.append("\n");
             list.append(room);
         }
-        Integer id = Prompt.readPositiveInt("Select room id " + list, TerminalEntries.BACK);
+        Integer id = Prompt.readPositiveInt("Select room id " + list);
 
         return rooms.stream().filter(room -> id.equals(room.id())).findFirst();
     }

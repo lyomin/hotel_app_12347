@@ -14,7 +14,7 @@ public class Settings extends ActionList {
     };
 
     public Settings() {
-        super(TerminalEntries.SETTINGS, settings, TerminalEntries.BACK);
+        super(TerminalEntries.SETTINGS, settings);
     }
 
 

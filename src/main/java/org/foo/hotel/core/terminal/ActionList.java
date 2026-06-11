@@ -5,12 +5,10 @@ public abstract class ActionList implements CommandList {
 
     private final String commandName;
     private final Command[] commands;
-    private final String back;
 
-    protected ActionList(String commandName, Command[] commands, String back) {
+    protected ActionList(String commandName, Command[] commands) {
         this.commandName = commandName;
         this.commands = commands;
-        this.back = back;
     }
 
     @Override
@@ -23,8 +21,4 @@ public abstract class ActionList implements CommandList {
         return commands;
     }
 
-    @Override
-    public String aboardCommand() {
-        return back;
-    }
 }

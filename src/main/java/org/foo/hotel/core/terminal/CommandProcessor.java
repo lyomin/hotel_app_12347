@@ -34,7 +34,7 @@ public class CommandProcessor {
                     }
                 } else if (currentAction instanceof CommandList list && (list.getCommands() != null || list.getCommands().length != 0)) {
                     cleanScreen();
-                    selected = Prompt.read(getCommandsPrompt(list), currentAction.aboardCommand());
+                    selected = Prompt.read(getCommandsPrompt(list));
 
                     Command action = getSelectedCommand(selected, list.getCommands());
 
@@ -60,7 +60,7 @@ public class CommandProcessor {
                     currentAction = commandActions.pop();
                 }
             }
-        } while (!rootAction.aboardCommand().equals(selected));
+        } while (!TerminalEntries.EXIT.equals(selected));
     }
 
     private Command getSelectedCommand(String name, Command[] commands) {
@@ -78,7 +78,7 @@ public class CommandProcessor {
             commands.append("\n").append(action.getName());
         }
 
-        commands.append("\nto aborad type: ").append(currentAction.aboardCommand());
+        commands.append("\nto aborad type: ").append(TerminalEntries.BACK);
 
         return commands + "\nSelect command";
     }

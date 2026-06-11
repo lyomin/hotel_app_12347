@@ -8,9 +8,9 @@ import java.util.Optional;
 
 public class GuestProccessor implements ModelInputInterface<Guest> {
     @Override
-    public Optional<Guest> get(String abordSelection) {
-        String name = Prompt.read("Guest name", abordSelection);
-        String surname = Prompt.read("Guest surname", abordSelection);
+    public Optional<Guest> get() {
+        String name = Prompt.read("Guest name");
+        String surname = Prompt.read("Guest surname");
         return Optional.of(new Guest(name, surname));
     }
 }

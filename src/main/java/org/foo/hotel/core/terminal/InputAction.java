@@ -22,15 +22,11 @@ public class InputAction implements CommandAction {
         return commandName;
     }
 
-    @Override
-    public String aboardCommand() {
-        return TerminalEntries.BACK;
-    }
 
     public boolean exec() {
 
-                String input = Prompt.read(prompt, aboardCommand());
-                if (aboardCommand().equals(input)) {
+                String input = Prompt.read(prompt);
+                if (TerminalEntries.BACK.equals(input)) {
                     return true;
                 }
 
