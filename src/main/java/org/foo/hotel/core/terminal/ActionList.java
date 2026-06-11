@@ -1,6 +1,5 @@
 package org.foo.hotel.core.terminal;
 
-import java.io.Console;
 
 public abstract class ActionList implements CommandList {
 

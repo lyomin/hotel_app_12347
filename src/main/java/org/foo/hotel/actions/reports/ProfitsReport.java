@@ -2,7 +2,6 @@ package org.foo.hotel.actions.reports;
 
 import org.foo.hotel.actions.form.RoomIdSelector;
 import org.foo.hotel.core.terminal.CommandAction;
-import org.foo.hotel.core.terminal.Procedure;
 import org.foo.hotel.core.terminal.TerminalEntries;
 import org.foo.hotel.model.RoomStats;
 import org.foo.hotel.service.RoomOccupationLogService;
@@ -11,7 +10,6 @@ import java.util.List;
 
 public class ProfitsReport implements CommandAction {
     private final RoomOccupationLogService occupationHistoryService;
-    private final RoomIdSelector roomForm = new RoomIdSelector();
 
     public ProfitsReport(RoomOccupationLogService occupationHistoryService) {
         this.occupationHistoryService = occupationHistoryService;

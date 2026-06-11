@@ -30,7 +30,6 @@ public class CommandProcessor {
                         // Gets list of stored commands. If it contains only procedure rollback to parent command.
                         if (!commandActions.isEmpty()) {
                             currentAction = commandActions.pop();
-                            continue;
                         }
                     }
                 } else if (currentAction instanceof CommandList list && (list.getCommands() != null || list.getCommands().length != 0)) {
@@ -73,13 +72,13 @@ public class CommandProcessor {
     }
 
     private String getCommandsPrompt(CommandList currentAction) {
-        String commands = "Action " + currentAction.getName() + " commands: ";
+        StringBuilder commands = new StringBuilder("Action " + currentAction.getName() + " commands: ");
 
         for (Command action : currentAction.getCommands()) {
-            commands += "\n" + action.getName();
+            commands.append("\n").append(action.getName());
         }
 
-        commands += "\nto aborad type: " + currentAction.aboardCommand();
+        commands.append("\nto aborad type: ").append(currentAction.aboardCommand());
 
         return commands + "\nSelect command";
     }

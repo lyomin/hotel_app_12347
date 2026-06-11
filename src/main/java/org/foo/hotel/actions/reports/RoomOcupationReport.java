@@ -2,7 +2,6 @@ package org.foo.hotel.actions.reports;
 
 import org.foo.hotel.actions.form.RoomIdSelector;
 import org.foo.hotel.core.terminal.CommandAction;
-import org.foo.hotel.core.terminal.Procedure;
 import org.foo.hotel.core.terminal.TerminalEntries;
 import org.foo.hotel.model.OccupationLog;
 import org.foo.hotel.model.Room;

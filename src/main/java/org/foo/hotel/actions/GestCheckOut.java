@@ -2,7 +2,6 @@ package org.foo.hotel.actions;
 
 import org.foo.hotel.actions.form.RoomIdSelector;
 import org.foo.hotel.core.terminal.CommandAction;
-import org.foo.hotel.core.terminal.Procedure;
 import org.foo.hotel.core.terminal.TerminalEntries;
 import org.foo.hotel.model.Room;
 import org.foo.hotel.model.RoomOccupation;
@@ -33,7 +32,7 @@ public class GestCheckOut implements CommandAction {
     public boolean exec() {
             List<RoomOccupation> occupations = occupationService.getAll();
 
-            Optional<Room> room = roomForm.get(occupations.stream().map(o -> o.room()).toList(), aboardCommand());
+            Optional<Room> room = roomForm.get(occupations.stream().map(RoomOccupation::room).toList(), aboardCommand());
 
             if (room.isEmpty()) {
                 System.out.println("Room not found.");

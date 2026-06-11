@@ -3,7 +3,6 @@ package org.foo.hotel.actions;
 import org.foo.hotel.actions.form.RegistrationProcesor;
 import org.foo.hotel.core.terminal.AboardException;
 import org.foo.hotel.core.terminal.CommandAction;
-import org.foo.hotel.core.terminal.Procedure;
 import org.foo.hotel.core.terminal.TerminalEntries;
 import org.foo.hotel.service.RoomOccupationService;
 import org.foo.hotel.service.RoomService;
