@@ -23,18 +23,13 @@ public class ProfitsReport implements CommandAction {
     }
 
     @Override
-    public CommandAction[] getCommands() {
-        return CommandAction.noActions();
-    }
-
-    @Override
     public String aboardCommand() {
         return TerminalEntries.BACK;
     }
 
     @Override
-    public Procedure getProcedure() {
-        return () -> {
+    public boolean exec() {
+
             List<RoomStats> profitReport = occupationHistoryService.getRoomsOccupationStatistics();
             String headerFormat = "| %-10s | %-11s | %-14s |%n";
             String rowFormat    = "| %-10s | %11d | %-14s |%n";
@@ -54,6 +49,5 @@ public class ProfitsReport implements CommandAction {
 
             return true;
 
-        };
     }
 }

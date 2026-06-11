@@ -25,18 +25,12 @@ public class GestCheckOut implements CommandAction {
     }
 
     @Override
-    public CommandAction[] getCommands() {
-        return CommandAction.noActions();
-    }
-
-    @Override
     public String aboardCommand() {
         return TerminalEntries.BACK;
     }
 
     @Override
-    public Procedure getProcedure() {
-        return () -> {
+    public boolean exec() {
             List<RoomOccupation> occupations = occupationService.getAll();
 
             Optional<Room> room = roomForm.get(occupations.stream().map(o -> o.room()).toList(), aboardCommand());
@@ -49,7 +43,5 @@ public class GestCheckOut implements CommandAction {
             occupationService.freeRoom(room.get());
             System.out.println("Occupation freed.");
             return true;
-
-        };
     }
 }

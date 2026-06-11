@@ -31,18 +31,12 @@ public class RoomOcupationReport implements CommandAction {
     }
 
     @Override
-    public CommandAction[] getCommands() {
-        return CommandAction.noActions();
-    }
-
-    @Override
     public String aboardCommand() {
         return TerminalEntries.BACK;
     }
 
     @Override
-    public Procedure getProcedure() {
-        return () -> {
+    public boolean exec() {
             List<Room> rooms = occupationHistoryService.getOccupationHistory().stream().map(OccupationLog::room)
                     .distinct().toList();
 
@@ -82,6 +76,5 @@ public class RoomOcupationReport implements CommandAction {
 
             return true;
 
-        };
     }
 }

@@ -18,4 +18,5 @@ public class TerminalEntries {
     public static final String ROOM_REPORT = "room report";
     public static final String ROOM_NOT_FOUND = "Room not found.";
     public static final String PROFITS_REPORT = "profits report";
+    public static final String ROOM_OCCUPATION = "room occupation";
 }

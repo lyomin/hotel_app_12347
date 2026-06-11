@@ -7,26 +7,25 @@ import java.util.Deque;
 import java.util.LinkedList;
 
 public class CommandProcessor {
-    CommandAction rootAction;
+    CommandList rootAction;
 
-    public CommandProcessor(CommandAction rootAction) {
+    public CommandProcessor(CommandList rootAction) {
         this.rootAction = rootAction;
     }
 
     public void run() throws IOException {
-        CommandAction currentAction = rootAction;
-        Deque<CommandAction> commandActions = new LinkedList<>();
+        Command currentAction = rootAction;
+        Deque<Command> commandActions = new LinkedList<>();
 
 
         String selected = "";
         do {
             try {
+                if (currentAction instanceof Procedure procedure) {
                 // Access the command. If unsuccessful repeat.
-                Procedure procedure = currentAction.getProcedure();
 
-                if (procedure != null) {
                     cleanScreen();
-                    if (currentAction.getProcedure().exec()) {
+                    if (procedure.exec()) {
                         Prompt.read(TerminalEntries.ENTER_KEY_TO_CONTINUE);
                         // Gets list of stored commands. If it contains only procedure rollback to parent command.
                         if (!commandActions.isEmpty()) {
@@ -34,11 +33,11 @@ public class CommandProcessor {
                             continue;
                         }
                     }
-                } else if (currentAction.getCommands() != null || currentAction.getCommands().length != 0) {
+                } else if (currentAction instanceof CommandList list && (list.getCommands() != null || list.getCommands().length != 0)) {
                     cleanScreen();
-                    selected = Prompt.read(getCommandsPrompt(currentAction), currentAction.aboardCommand());
+                    selected = Prompt.read(getCommandsPrompt(list), currentAction.aboardCommand());
 
-                    CommandAction action = getSelectedCommand(selected, currentAction.getCommands());
+                    Command action = getSelectedCommand(selected, list.getCommands());
 
                     if (action != null) {
                         commandActions.push(currentAction);
@@ -65,18 +64,18 @@ public class CommandProcessor {
         } while (!rootAction.aboardCommand().equals(selected));
     }
 
-    private CommandAction getSelectedCommand(String name, CommandAction[] commands) {
-        for (CommandAction command : commands) {
+    private Command getSelectedCommand(String name, Command[] commands) {
+        for (Command command : commands) {
             if (command.getName().equals(name))
                 return command;
         }
         return null;
     }
 
-    private String getCommandsPrompt(CommandAction currentAction) {
+    private String getCommandsPrompt(CommandList currentAction) {
         String commands = "Action " + currentAction.getName() + " commands: ";
 
-        for (CommandAction action : currentAction.getCommands()) {
+        for (Command action : currentAction.getCommands()) {
             commands += "\n" + action.getName();
         }
 

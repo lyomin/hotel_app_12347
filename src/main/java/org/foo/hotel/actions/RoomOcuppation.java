@@ -1,10 +1,7 @@
 package org.foo.hotel.actions;
 
 import kotlin.Pair;
-import org.foo.hotel.actions.form.RegistrationProcesor;
-import org.foo.hotel.core.terminal.AboardException;
 import org.foo.hotel.core.terminal.CommandAction;
-import org.foo.hotel.core.terminal.Procedure;
 import org.foo.hotel.core.terminal.TerminalEntries;
 import org.foo.hotel.model.Room;
 import org.foo.hotel.model.RoomOccupation;
@@ -13,7 +10,6 @@ import org.foo.hotel.service.RoomService;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 public class RoomOcuppation implements CommandAction {
 
@@ -27,12 +23,7 @@ public class RoomOcuppation implements CommandAction {
 
     @Override
     public String getName() {
-        return "room occupation";
-    }
-
-    @Override
-    public CommandAction[] getCommands() {
-        return CommandAction.noActions();
+        return TerminalEntries.ROOM_OCCUPATION;
     }
 
     @Override
@@ -41,10 +32,7 @@ public class RoomOcuppation implements CommandAction {
     }
 
     @Override
-    public Procedure getProcedure() {
-        return new Procedure() {
-            @Override
-            public boolean exec() {
+    public boolean exec() {
 
                 List<Pair<Room, RoomOccupation>> occupations = listOccupations();
                 // Define formats for header and rows
@@ -65,8 +53,7 @@ public class RoomOcuppation implements CommandAction {
                         System.out.printf(rowFormat, occupation.getFirst().id(), occupation.getFirst().type(), occupation.getSecond().guest().name(), occupation.getSecond().guest().surname(), occupation.getSecond().price());
                 }
                 return true;
-            }
-        };
+
     }
 
     private List<Pair<Room, RoomOccupation>> listOccupations() {

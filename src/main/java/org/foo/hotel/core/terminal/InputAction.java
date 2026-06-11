@@ -26,17 +26,11 @@ public class InputAction implements CommandAction {
     }
 
     @Override
-    public CommandAction[] getCommands() {
-        return CommandAction.noActions();
-    }
-
-    @Override
     public String aboardCommand() {
         return TerminalEntries.BACK;
     }
 
-    public Procedure getProcedure() {
-        return () -> {
+    public boolean exec() {
 
                 String input = Prompt.read(prompt, aboardCommand());
                 if (aboardCommand().equals(input)) {
@@ -50,6 +44,5 @@ public class InputAction implements CommandAction {
                 valueSetter.accept(input);
 
             return true;
-        };
     }
 }

@@ -24,20 +24,12 @@ public class RegisterGuest implements CommandAction {
     }
 
     @Override
-    public CommandAction[] getCommands() {
-        return CommandAction.noActions();
-    }
-
-    @Override
     public String aboardCommand() {
         return TerminalEntries.BACK;
     }
 
     @Override
-    public Procedure getProcedure() {
-        return new Procedure() {
-            @Override
-            public boolean exec() {
+    public boolean exec() {
 
                 try {
                     Optional<org.foo.hotel.model.RoomOccupation> occupation = registrationProcesor.get(aboardCommand());
@@ -46,7 +38,5 @@ public class RegisterGuest implements CommandAction {
                 }
                 
                 return true;
-            }
-        };
     }
 }
